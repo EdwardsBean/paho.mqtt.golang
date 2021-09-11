@@ -20,7 +20,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/eclipse/paho.mqtt.golang"
+	mqtt "github.com/eclipse/paho.mqtt.golang"
 )
 
 var f mqtt.MessageHandler = func(client mqtt.Client, msg mqtt.Message) {
@@ -29,6 +29,7 @@ var f mqtt.MessageHandler = func(client mqtt.Client, msg mqtt.Message) {
 }
 
 func main() {
+
 	mqtt.DEBUG = log.New(os.Stdout, "", 0)
 	mqtt.ERROR = log.New(os.Stdout, "", 0)
 	opts := mqtt.NewClientOptions().AddBroker("tcp://iot.eclipse.org:1883").SetClientID("gotrivial")
@@ -40,7 +41,6 @@ func main() {
 	if token := c.Connect(); token.Wait() && token.Error() != nil {
 		panic(token.Error())
 	}
-
 	if token := c.Subscribe("go-mqtt/sample", 0, nil); token.Wait() && token.Error() != nil {
 		fmt.Println(token.Error())
 		os.Exit(1)

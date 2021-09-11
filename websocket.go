@@ -10,7 +10,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gorilla/websocket"
+	"github.com/edwardsbean/websocket"
 )
 
 // WebsocketOptions are config options for a websocket dialer
@@ -40,9 +40,9 @@ func NewWebsocket(host string, tlsc *tls.Config, timeout time.Duration, requestH
 		HandshakeTimeout:  timeout,
 		EnableCompression: false,
 		TLSClientConfig:   tlsc,
-		Subprotocols:      []string{"mqtt"},
-		ReadBufferSize:    options.ReadBufferSize,
-		WriteBufferSize:   options.WriteBufferSize,
+		// Subprotocols:      []string{"mqtt"},
+		ReadBufferSize:  options.ReadBufferSize,
+		WriteBufferSize: options.WriteBufferSize,
 	}
 
 	ws, resp, err := dialer.Dial(host, requestHeader)

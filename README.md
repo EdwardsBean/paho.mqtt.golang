@@ -22,7 +22,7 @@ The process depends upon whether you are using [modules](https://golang.org/ref/
 
 #### Modules
 
-If you are using [modules](https://blog.golang.org/using-go-modules) then `import "github.com/eclipse/paho.mqtt.golang"` 
+If you are using [modules](https://blog.golang.org/using-go-modules) then `import "github.com/edwardsbean/paho.mqtt.golang"` 
 and start using it. The necessary packages will be download automatically when you run `go build`. 
 
 Note that the latest release will be downloaded and changes may have been made since the release. If you have 
